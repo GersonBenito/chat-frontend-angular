@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="chat-container">
+        <div class="local">
+            <div class="message" *ngFor="let message of _chatSercice.chats">{{ message.message }}</div>
+        </div>
+        <div class="remote">
+            <div class="message">message remoto</div>
+        </div>
+    </div>
+    <div class="type-messages-container">
+        <form (ngSubmit)="sendMessage()">
+            <input type="text" name="message" [(ngModel)]="message">
+            <button type="submit">send</button>
+        </form>
+    </div>
+</div>

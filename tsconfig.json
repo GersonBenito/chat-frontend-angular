@@ -18,6 +18,13 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    "resolveJsonModule": true,
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@helpers/*": ["src/app/helpers/*"]
+    },
     "lib": [
       "es2020",
       "dom"

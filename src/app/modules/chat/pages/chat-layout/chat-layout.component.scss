@@ -1,0 +1,30 @@
+.container{
+    height: 100vh;
+    background-color: rgb(223, 214, 214);
+    .chat-container{
+        background-color: aquamarine;
+        height: 80%;
+        padding: 16px;
+        .local{
+            width: 100%;
+            .message{
+                display: flex;
+                justify-content: flex-end;
+                background-color: rgb(86, 216, 86);
+                color: white;
+            }
+        }
+        .remote{
+            .message{
+                display: flex;
+                justify-content: flex-start;
+                background-color: rgb(58, 58, 218);
+                color: white;
+            }
+        }
+    }
+    .type-messages-container{
+        background-color: beige;
+        height: 15%;
+    }
+}
