@@ -1,30 +1,120 @@
 .container{
     height: 100vh;
-    background-color: rgb(223, 214, 214);
-    .chat-container{
-        background-color: aquamarine;
-        height: 80%;
-        padding: 16px;
+    .wrapper-chat{
+        height: 100%;
+        display: grid;
+        grid-template-columns: 35% 65%;
+        // .user-container{
+        //     background-color: black;
+        // }
+    }
+}
+
+.chat-container{
+    display: grid;
+    grid-template-rows: 15% 70% 15%;
+    background-color: #FFFFFF;
+    .container-message{
         .local{
-            width: 100%;
-            .message{
-                display: flex;
-                justify-content: flex-end;
-                background-color: rgb(86, 216, 86);
-                color: white;
-            }
+            display: flex;
+            justify-content: flex-end;
+            background-color: rgb(86, 216, 86);
+            color: white;
         }
         .remote{
-            .message{
-                display: flex;
-                justify-content: flex-start;
-                background-color: rgb(58, 58, 218);
-                color: white;
-            }
+            display: flex;
+            justify-content: flex-start;
+            background-color: rgb(58, 58, 218);
+            color: white;
         }
     }
-    .type-messages-container{
-        background-color: beige;
-        height: 15%;
+}
+
+.type-messages-container{
+    background-color: beige;
+}
+
+.app-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.user-container{
+    overflow: auto;
+    .user{
+        display: grid;
+        grid-template-columns: 18% 78%;
+        gap: 8px;
+        margin: 8px 0px;
+        cursor: pointer;
+        padding: 8px 16px;
+        &:hover{
+            background: #f9f6f6;
+        }
+        .photo{
+            img{
+                width: 50px;
+                border: 2px solid #CF0A0A;
+                border-radius: 30px;
+            }
+        }
+        .info{
+            display: flex;
+            justify-content: space-between;
+        }
     }
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .info{
+        .name{
+            color: #000000;
+            font-size: 16px;
+        }
+        .hour{
+            font-size: 12px;
+            color: #969292;
+        }
+    }
+    .content-message{
+        font-size: 14px;
+        margin-top: 4px;
+        color: #969292;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.user-container::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.user-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.user-container::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.user-container::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.user-container::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    // border-radius: 4px;
 }

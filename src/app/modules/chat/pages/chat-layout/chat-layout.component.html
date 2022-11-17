@@ -1,10 +1,43 @@
 <div class="container">
-    <div class="chat-container">
-        <div class="local">
-            <div class="message" *ngFor="let message of _chatSercice.chats">{{ message.message }}</div>
+    <div class="wrapper-chat">
+        <ng-content *ngTemplateOutlet="user_container"></ng-content>
+        <div class="chat-container">
+            <ng-content *ngTemplateOutlet="chat_content"></ng-content>
         </div>
-        <div class="remote">
-            <div class="message">message remoto</div>
+    </div>
+</div>
+
+<!-- user container -->
+<ng-template #user_container>
+    <div class="user-container">
+        <div class="user" *ngFor="let user of users">
+            <div class="photo">
+                <img [src]="user.photo" [alt]="user.user_name">
+            </div>
+            <div class="content">
+                <div class="info">
+                    <div class="name">{{user.user_name}}</div>
+                    <div class="hour">{{user.messages[0].hour}}</div>
+                </div>
+                <div class="content-message">{{user.messages[0].message}}</div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- chat content -->
+<ng-template #chat_content>
+    <mat-toolbar color="primary">
+        <button>hola</button>
+    </mat-toolbar>
+    <div class="container-message">
+        <div class="message">
+            <div [ngClass]="{
+                    'local':message.type_message === 1, 
+                    'remote': message.type_message === 2
+                }"
+                *ngFor="let message of _chatSercice.chats"
+            >{{ message.message }}</div>
         </div>
     </div>
     <div class="type-messages-container">
@@ -13,4 +46,4 @@
             <button type="submit">send</button>
         </form>
     </div>
-</div>
+</ng-template>

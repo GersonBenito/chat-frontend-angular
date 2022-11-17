@@ -21,7 +21,11 @@ export class ChatService {
 
   reciveMessage(): void {
     this._socketService.io.on('reciveMessage', (message: Message) =>{
-      this.chats.push(message);
+      let reciveMessage = {
+        ...message,
+        type_message: 2
+      }
+      this.chats.push(reciveMessage);
     });
   }
 

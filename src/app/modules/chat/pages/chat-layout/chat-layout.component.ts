@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '@core/models/message.interface';
 import { ChatService } from '@modules/chat/services/chat.service';
+import * as dataRaw from '../../../../data/mock.users.json';
 
 @Component({
   selector: 'app-chat-layout',
@@ -11,19 +12,26 @@ export class ChatLayoutComponent implements OnInit {
 
   public message = '';
   // public chat: Array<Message> = [];
+  public users: Array<any> = [];
 
   constructor(
     public _chatSercice: ChatService
-  ) { 
-    console.log(this._chatSercice.chats);
-    
+  ) { }
+
+  ngOnInit(): void {
+    this.getAllUser();
   }
 
-  ngOnInit(): void {}
+  getAllUser(): void{
+    const { users }: any = (dataRaw as any).default;
+    console.log(users);
+    this.users = users;
+  }
 
   sendMessage(): void{
     const messageInfo: Message = {
       id: 1,
+      type_message: 1,
       user_name: 'Gerson Benito',
       email: 'gersonbenito4@gmail.com',
       message: this.message,
@@ -32,13 +40,6 @@ export class ChatLayoutComponent implements OnInit {
     }
 
     this._chatSercice.sendMessage(messageInfo);
-
-    // messageInfo.id = 0;
-    // messageInfo.user_name = '';
-    // messageInfo.email = '';
-    // messageInfo.message = '';
-    // messageInfo.date = '';
-    // messageInfo.hour = '';
 
   }
 
